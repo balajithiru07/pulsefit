@@ -1,4 +1,13 @@
 import mongoose from 'mongoose';
+import dns from 'dns';
+
+// Set public DNS servers programmatically to bypass local DNS resolution issues with MongoDB Atlas SRV records
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+} catch (dnsError) {
+  console.warn(`⚠️ Warning: Failed to set public DNS servers: ${dnsError.message}`);
+}
+
 
 const connectDB = async () => {
   try {
