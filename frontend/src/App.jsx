@@ -14,17 +14,17 @@ import { NutritionHistory } from './components/NutritionHistory';
 import { GoalForm } from './components/GoalForm';
 import { WorkoutRecords } from './components/WorkoutRecords';
 
-import { 
-  Dumbbell, 
-  LayoutDashboard, 
-  Utensils, 
-  Moon, 
-  MessageSquare, 
-  Trophy, 
-  CreditCard, 
-  ShieldAlert, 
-  User, 
-  LogOut, 
+import {
+  Dumbbell,
+  LayoutDashboard,
+  Utensils,
+  Moon,
+  MessageSquare,
+  Trophy,
+  CreditCard,
+  ShieldAlert,
+  User,
+  LogOut,
   Sparkles,
   CalendarRange,
   Target,
@@ -83,12 +83,12 @@ function App() {
 
       {/* Mobile Sticky Header */}
       <header className="mobile-header">
-        <button 
+        <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          style={{ 
-            background: 'none', 
-            border: 'none', 
-            cursor: 'pointer', 
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
             color: 'var(--text-primary)',
             padding: '4px',
             display: 'flex',
@@ -103,8 +103,8 @@ function App() {
           <span className="text-gradient-cyan-violet" style={{ fontSize: '18px', fontWeight: 800, letterSpacing: '-0.5px' }}>PULSEFIT</span>
         </div>
 
-        <span 
-          style={{ fontSize: '24px', cursor: 'pointer', userSelect: 'none' }} 
+        <span
+          style={{ fontSize: '24px', cursor: 'pointer', userSelect: 'none' }}
           onClick={() => handleTabChange('profile')}
         >
           {user.profilePic || '🦊'}
@@ -112,8 +112,8 @@ function App() {
       </header>
 
       {/* Sidebar Overlay Backdrop */}
-      <div 
-        className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`} 
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`}
         onClick={() => setSidebarOpen(false)}
       ></div>
 
@@ -173,7 +173,7 @@ function App() {
             <span>Sleep Log</span>
           </div>
 
-          <div className={`nav-item ${tab === 'coach' ? 'active' : ''}`} onClick={() => handleTabChange('coach')}>
+          {/* <div className={`nav-item ${tab === 'coach' ? 'active' : ''}`} onClick={() => handleTabChange('coach')}>
             <MessageSquare size={18} />
             <span>AI Fitness Coach</span>
           </div>
@@ -191,7 +191,7 @@ function App() {
           <div className={`nav-item ${tab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')}>
             <User size={18} />
             <span>Profile metrics</span>
-          </div>
+          </div> */}
 
           {/* Admin panel conditionally visible */}
           {isAdmin && (
