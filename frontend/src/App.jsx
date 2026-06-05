@@ -12,6 +12,7 @@ import { AdminDashboard } from './components/AdminDashboard';
 import { ProfileForm } from './components/ProfileForm';
 import { NutritionHistory } from './components/NutritionHistory';
 import { GoalForm } from './components/GoalForm';
+import { WorkoutRecords } from './components/WorkoutRecords';
 
 import { 
   Dumbbell, 
@@ -152,6 +153,11 @@ function App() {
             <span>Workouts</span>
           </div>
 
+          <div className={`nav-item ${tab === 'workout_records' ? 'active' : ''}`} onClick={() => handleTabChange('workout_records')}>
+            <CalendarRange size={18} />
+            <span>Workout Records</span>
+          </div>
+
           <div className={`nav-item ${tab === 'nutrition' ? 'active' : ''}`} onClick={() => handleTabChange('nutrition')}>
             <Utensils size={18} />
             <span>Nutrition & Water</span>
@@ -209,6 +215,7 @@ function App() {
       <main className="main-content">
         {tab === 'dashboard' && <Dashboard setTab={handleTabChange} />}
         {tab === 'workouts' && <WorkoutLog />}
+        {tab === 'workout_records' && <WorkoutRecords />}
         {tab === 'goals' && <GoalForm />}
         {tab === 'nutrition' && <NutritionLog />}
         {tab === 'nutrition_history' && <NutritionHistory />}

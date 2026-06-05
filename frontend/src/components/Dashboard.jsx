@@ -122,7 +122,7 @@ export const Dashboard = ({ setTab }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           
           {/* Daily Gym Check-In Row */}
-          <div className="glass-panel" style={{ padding: '24px' }}>
+          <div className="glass-panel dashboard-card">
             <h3 style={{ fontSize: '18px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
               🏋️ Daily Gym Check-In Tracker
             </h3>
@@ -218,7 +218,7 @@ export const Dashboard = ({ setTab }) => {
           </div>
 
           {/* Active Goal Board */}
-          <div className="glass-panel" style={{ padding: '24px' }}>
+          <div className="glass-panel dashboard-card">
             <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>🎯 Target Fitness Goal</h3>
             {activeGoal ? (
               <div>
@@ -267,7 +267,7 @@ export const Dashboard = ({ setTab }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           
           {/* Wearable Sync Widget */}
-          <div className="glass-panel" style={{ padding: '24px' }}>
+          <div className="glass-panel dashboard-card">
             <h3 style={{ fontSize: '17px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
               <Watch size={20} className="text-gradient-cyan-violet" /> Sync Smart Wearables
             </h3>
@@ -322,7 +322,7 @@ export const Dashboard = ({ setTab }) => {
           </div>
 
           {/* Quick Action Widget */}
-          <div className="glass-panel" style={{ padding: '24px' }}>
+          <div className="glass-panel dashboard-card">
             <h3 style={{ fontSize: '17px', fontWeight: 600, marginBottom: '14px' }}>Quick Logs</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <div 
