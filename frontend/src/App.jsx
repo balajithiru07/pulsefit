@@ -186,12 +186,12 @@ function App() {
           <div className={`nav-item ${tab === 'billing' ? 'active' : ''}`} onClick={() => handleTabChange('billing')}>
             <CreditCard size={18} />
             <span>Pricing & Billing</span>
-          </div>
+          </div> */}
 
           <div className={`nav-item ${tab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')}>
             <User size={18} />
             <span>Profile metrics</span>
-          </div> */}
+          </div>
 
           {/* Admin panel conditionally visible */}
           {isAdmin && (
@@ -220,9 +220,9 @@ function App() {
         {tab === 'nutrition' && <NutritionLog />}
         {tab === 'nutrition_history' && <NutritionHistory />}
         {tab === 'sleep' && <SleepTracker />}
-        {tab === 'coach' && <AICoach setTab={handleTabChange} />}
+        {/* {tab === 'coach' && <AICoach setTab={handleTabChange} />}
         {tab === 'challenges' && <SocialHub />}
-        {tab === 'billing' && <Billing />}
+        {tab === 'billing' && <Billing />} */}
         {tab === 'profile' && <ProfileForm />}
         {tab === 'admin' && isAdmin && <AdminDashboard />}
       </main>
