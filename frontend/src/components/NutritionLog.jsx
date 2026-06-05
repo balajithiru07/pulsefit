@@ -132,7 +132,7 @@ export const NutritionLog = () => {
     : [];
 
   return (
-    <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '28px' }}>
+    <div className="animate-fade-in responsive-grid-meals">
       
       {/* Left Column: Logger & Water */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
@@ -143,7 +143,7 @@ export const NutritionLog = () => {
             <Utensils className="text-gradient-cyan-violet" /> Food Logging Console
           </h3>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '16px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>MEAL TYPE</label>
               <select className="form-input" value={mealName} onChange={(e) => setMealName(e.target.value)}>
@@ -268,7 +268,7 @@ export const NutritionLog = () => {
           </div>
 
           <form onSubmit={handleAddMeal}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '16px' }}>
               <div>
                 <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>FOOD ITEM NAME</label>
                 <input
@@ -294,7 +294,7 @@ export const NutritionLog = () => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '24px' }}>
+            <div className="responsive-grid-4col" style={{ gap: '12px', marginBottom: '24px' }}>
               <div>
                 <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '11px', marginBottom: '6px' }}>CALORIES</label>
                 <input type="number" className="form-input" placeholder="kcal" value={calories} onChange={(e) => setCalories(e.target.value)} required />
@@ -361,7 +361,7 @@ export const NutritionLog = () => {
         <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '20px', alignSelf: 'flex-start' }}>📊 Daily Macro Balance</h3>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '28px', width: '100%' }}>
+          <div className="responsive-macro-balance">
             {/* Custom SVG Donut Chart */}
             <div className="progress-ring-container" style={{ width: '120px', height: '120px' }}>
               <svg width="120" height="120">
@@ -482,20 +482,8 @@ export const NutritionLog = () => {
 
       {/* Custom Food Modals */}
       {showAddFoodModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'rgba(0,0,0,0.4)',
-          backdropFilter: 'blur(4px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div className="glass-panel" style={{ padding: '28px', width: '400px', background: 'var(--bg-card)' }}>
+        <div className="modal-overlay">
+          <div className="modal-content" style={{ maxWidth: '400px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               🍎 Save New Food to Database
             </h3>
@@ -515,7 +503,7 @@ export const NutritionLog = () => {
                 <label style={{ display: 'block', fontSize: '12px', marginBottom: '6px', color: 'var(--text-secondary)' }}>NAME</label>
                 <input name="name" type="text" className="form-input" placeholder="e.g. Rice with Dal" required />
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+              <div className="responsive-grid-2col" style={{ gap: '12px', marginBottom: '12px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', marginBottom: '6px', color: 'var(--text-secondary)' }}>CALORIES</label>
                   <input name="calories" type="number" className="form-input" placeholder="kcal" required />
@@ -525,7 +513,7 @@ export const NutritionLog = () => {
                   <input name="protein" type="number" className="form-input" placeholder="g" />
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '20px' }}>
+              <div className="responsive-grid-2col" style={{ gap: '12px', marginBottom: '20px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', marginBottom: '6px', color: 'var(--text-secondary)' }}>CARBS (G)</label>
                   <input name="carbs" type="number" className="form-input" placeholder="g" />
@@ -545,20 +533,8 @@ export const NutritionLog = () => {
       )}
 
       {editingFood && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'rgba(0,0,0,0.4)',
-          backdropFilter: 'blur(4px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div className="glass-panel" style={{ padding: '28px', width: '400px', background: 'var(--bg-card)' }}>
+        <div className="modal-overlay">
+          <div className="modal-content" style={{ maxWidth: '400px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               ✏️ Edit Custom Food
             </h3>
@@ -583,7 +559,7 @@ export const NutritionLog = () => {
                   required 
                 />
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+              <div className="responsive-grid-2col" style={{ gap: '12px', marginBottom: '12px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', marginBottom: '6px', color: 'var(--text-secondary)' }}>CALORIES</label>
                   <input 
@@ -604,7 +580,7 @@ export const NutritionLog = () => {
                   />
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '20px' }}>
+              <div className="responsive-grid-2col" style={{ gap: '12px', marginBottom: '20px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', marginBottom: '6px', color: 'var(--text-secondary)' }}>CARBS (G)</label>
                   <input 

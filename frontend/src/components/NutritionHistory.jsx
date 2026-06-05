@@ -168,14 +168,15 @@ export const NutritionHistory = () => {
 
               {/* Card Body - Details list */}
               {isExpanded && (
-                <div style={{ 
-                  marginTop: '16px', 
-                  paddingTop: '16px', 
-                  borderTop: '1px solid rgba(255,255,255,0.06)',
-                  display: 'grid',
-                  gridTemplateColumns: group.workouts.length > 0 && group.meals.length > 0 ? '1fr 1fr' : '1fr',
-                  gap: '24px'
-                }}>
+                <div 
+                  className={group.workouts.length > 0 && group.meals.length > 0 ? "responsive-grid-2col" : ""}
+                  style={{ 
+                    marginTop: '16px', 
+                    paddingTop: '16px', 
+                    borderTop: '1px solid rgba(255,255,255,0.06)',
+                    gap: '24px'
+                  }}
+                >
                   
                   {/* Workouts Details Section */}
                   {group.workouts.length > 0 && (

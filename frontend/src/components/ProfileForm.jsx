@@ -91,7 +91,7 @@ export const ProfileForm = () => {
         </div>
 
         {/* Basic Fields */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+        <div className="responsive-grid-2col" style={{ gap: '20px', marginBottom: '20px' }}>
           <div>
             <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>ATHLETE NAME</label>
             <input type="text" className="form-input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -103,7 +103,7 @@ export const ProfileForm = () => {
         </div>
 
         {/* Health Metrics */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '24px' }}>
+        <div className="responsive-grid-3col" style={{ gap: '20px', marginBottom: '24px' }}>
           <div>
             <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>GENDER</label>
             <select className="form-input" value={gender} onChange={(e) => setGender(e.target.value)}>
@@ -129,7 +129,7 @@ export const ProfileForm = () => {
             <UtensilsCrossed size={16} className="text-gradient-cyan-violet" /> Daily Nutrition Goal Targets
           </h4>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '16px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '12px', fontWeight: 500, marginBottom: '6px' }}>CALORIES TARGET (KCAL)</label>
               <input 
@@ -152,7 +152,7 @@ export const ProfileForm = () => {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
+          <div className="responsive-grid-3col" style={{ gap: '12px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '12px', fontWeight: 500, marginBottom: '6px' }}>PROTEIN TARGET (G)</label>
               <input 
@@ -190,7 +190,7 @@ export const ProfileForm = () => {
         <div style={{ marginBottom: '28px', borderTop: '1px solid var(--border-glass)', paddingTop: '20px' }}>
           <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '12px' }}>FITNESS INTERESTS / GOALS</label>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '10px' }}>
             {[
               { id: 'weight_loss', label: 'Weight loss' },
               { id: 'weight_gain', label: 'Weight gain' },

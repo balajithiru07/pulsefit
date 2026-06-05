@@ -26,7 +26,7 @@ export const SocialHub = () => {
   ].sort((a, b) => b.points - a.points);
 
   return (
-    <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '28px' }}>
+    <div className="animate-fade-in responsive-grid-1-2">
       
       {/* Left Column: Gamified Challenges */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>

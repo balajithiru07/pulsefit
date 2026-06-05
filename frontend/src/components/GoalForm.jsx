@@ -32,7 +32,7 @@ export const GoalForm = () => {
   };
 
   return (
-    <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px' }}>
+    <div className="animate-fade-in responsive-grid-2col">
       
       {/* Logger Form */}
       <div className="glass-panel" style={{ padding: '28px' }}>
@@ -52,7 +52,7 @@ export const GoalForm = () => {
             </select>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '20px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>START WEIGHT (KG)</label>
               <input

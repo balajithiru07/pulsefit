@@ -26,13 +26,16 @@ import {
   LogOut, 
   Sparkles,
   CalendarRange,
-  Target
+  Target,
+  Menu,
+  X
 } from 'lucide-react';
 
 function App() {
   const { user, token, loading, toastMessage, logout } = useAuth();
   const [authView, setAuthView] = useState('login'); // 'login', 'register', 'forgot'
   const [tab, setTab] = useState('dashboard'); // 'dashboard', 'workouts', etc.
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (loading) {
     return (
@@ -57,6 +60,11 @@ function App() {
 
   const isAdmin = user.role === 'admin';
 
+  const handleTabChange = (newTab) => {
+    setTab(newTab);
+    setSidebarOpen(false);
+  };
+
   return (
     <div className="app-container">
       {/* Toast Alert Popups */}
@@ -72,8 +80,44 @@ function App() {
         </div>
       )}
 
+      {/* Mobile Sticky Header */}
+      <header className="mobile-header">
+        <button 
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          style={{ 
+            background: 'none', 
+            border: 'none', 
+            cursor: 'pointer', 
+            color: 'var(--text-primary)',
+            padding: '4px',
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Dumbbell size={20} className="text-gradient-cyan-violet" style={{ strokeWidth: 2.5 }} />
+          <span className="text-gradient-cyan-violet" style={{ fontSize: '18px', fontWeight: 800, letterSpacing: '-0.5px' }}>PULSEFIT</span>
+        </div>
+
+        <span 
+          style={{ fontSize: '24px', cursor: 'pointer', userSelect: 'none' }} 
+          onClick={() => handleTabChange('profile')}
+        >
+          {user.profilePic || '🦊'}
+        </span>
+      </header>
+
+      {/* Sidebar Overlay Backdrop */}
+      <div 
+        className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`} 
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
       {/* Glassmorphic Navigation Sidebar */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         {/* Branding */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px' }}>
           <Dumbbell size={24} className="text-gradient-cyan-violet" style={{ strokeWidth: 2.5 }} />
@@ -93,59 +137,59 @@ function App() {
 
         {/* Links */}
         <nav style={{ flex: 1 }}>
-          <div className={`nav-item ${tab === 'dashboard' ? 'active' : ''}`} onClick={() => setTab('dashboard')}>
+          <div className={`nav-item ${tab === 'dashboard' ? 'active' : ''}`} onClick={() => handleTabChange('dashboard')}>
             <LayoutDashboard size={18} />
             <span>Dashboard</span>
           </div>
 
-          <div className={`nav-item ${tab === 'goals' ? 'active' : ''}`} onClick={() => setTab('goals')}>
+          <div className={`nav-item ${tab === 'goals' ? 'active' : ''}`} onClick={() => handleTabChange('goals')}>
             <Target size={18} />
             <span>Target Goal</span>
           </div>
 
-          <div className={`nav-item ${tab === 'workouts' ? 'active' : ''}`} onClick={() => setTab('workouts')}>
+          <div className={`nav-item ${tab === 'workouts' ? 'active' : ''}`} onClick={() => handleTabChange('workouts')}>
             <Dumbbell size={18} />
             <span>Workouts</span>
           </div>
 
-          <div className={`nav-item ${tab === 'nutrition' ? 'active' : ''}`} onClick={() => setTab('nutrition')}>
+          <div className={`nav-item ${tab === 'nutrition' ? 'active' : ''}`} onClick={() => handleTabChange('nutrition')}>
             <Utensils size={18} />
             <span>Nutrition & Water</span>
           </div>
 
-          <div className={`nav-item ${tab === 'nutrition_history' ? 'active' : ''}`} onClick={() => setTab('nutrition_history')}>
+          <div className={`nav-item ${tab === 'nutrition_history' ? 'active' : ''}`} onClick={() => handleTabChange('nutrition_history')}>
             <CalendarRange size={18} />
             <span>Nutrition History</span>
           </div>
 
-          <div className={`nav-item ${tab === 'sleep' ? 'active' : ''}`} onClick={() => setTab('sleep')}>
+          <div className={`nav-item ${tab === 'sleep' ? 'active' : ''}`} onClick={() => handleTabChange('sleep')}>
             <Moon size={18} />
             <span>Sleep Log</span>
           </div>
 
-          <div className={`nav-item ${tab === 'coach' ? 'active' : ''}`} onClick={() => setTab('coach')}>
+          <div className={`nav-item ${tab === 'coach' ? 'active' : ''}`} onClick={() => handleTabChange('coach')}>
             <MessageSquare size={18} />
             <span>AI Fitness Coach</span>
           </div>
 
-          <div className={`nav-item ${tab === 'challenges' ? 'active' : ''}`} onClick={() => setTab('challenges')}>
+          <div className={`nav-item ${tab === 'challenges' ? 'active' : ''}`} onClick={() => handleTabChange('challenges')}>
             <Trophy size={18} />
             <span>Challenges Hub</span>
           </div>
 
-          <div className={`nav-item ${tab === 'billing' ? 'active' : ''}`} onClick={() => setTab('billing')}>
+          <div className={`nav-item ${tab === 'billing' ? 'active' : ''}`} onClick={() => handleTabChange('billing')}>
             <CreditCard size={18} />
             <span>Pricing & Billing</span>
           </div>
 
-          <div className={`nav-item ${tab === 'profile' ? 'active' : ''}`} onClick={() => setTab('profile')}>
+          <div className={`nav-item ${tab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')}>
             <User size={18} />
             <span>Profile metrics</span>
           </div>
 
           {/* Admin panel conditionally visible */}
           {isAdmin && (
-            <div className={`nav-item ${tab === 'admin' ? 'active' : ''}`} onClick={() => setTab('admin')} style={{ borderLeft: '3px solid var(--color-rose)' }}>
+            <div className={`nav-item ${tab === 'admin' ? 'active' : ''}`} onClick={() => handleTabChange('admin')} style={{ borderLeft: '3px solid var(--color-rose)' }}>
               <ShieldAlert size={18} style={{ color: 'var(--color-rose)' }} />
               <span style={{ color: 'var(--color-rose)', fontWeight: 600 }}>Admin Console</span>
             </div>
@@ -154,7 +198,7 @@ function App() {
 
         {/* Bottom items */}
         <div style={{ borderTop: '1px solid var(--border-glass)', paddingTop: '16px' }}>
-          <div className="nav-item" onClick={logout} style={{ color: 'var(--color-rose)', marginBottom: 0 }}>
+          <div className="nav-item" onClick={() => { logout(); setSidebarOpen(false); }} style={{ color: 'var(--color-rose)', marginBottom: 0 }}>
             <LogOut size={18} />
             <span>Sign Out</span>
           </div>
@@ -163,18 +207,19 @@ function App() {
 
       {/* Main Body view wrapper */}
       <main className="main-content">
-        {tab === 'dashboard' && <Dashboard setTab={setTab} />}
+        {tab === 'dashboard' && <Dashboard setTab={handleTabChange} />}
         {tab === 'workouts' && <WorkoutLog />}
         {tab === 'goals' && <GoalForm />}
         {tab === 'nutrition' && <NutritionLog />}
         {tab === 'nutrition_history' && <NutritionHistory />}
         {tab === 'sleep' && <SleepTracker />}
-        {tab === 'coach' && <AICoach setTab={setTab} />}
+        {tab === 'coach' && <AICoach setTab={handleTabChange} />}
         {tab === 'challenges' && <SocialHub />}
         {tab === 'billing' && <Billing />}
         {tab === 'profile' && <ProfileForm />}
         {tab === 'admin' && isAdmin && <AdminDashboard />}
       </main>
+
 
     </div>
   );

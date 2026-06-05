@@ -49,7 +49,7 @@ export const SleepTracker = () => {
   const avgStats = getAvgSleepStats();
 
   return (
-    <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '28px' }}>
+    <div className="animate-fade-in responsive-grid-1-2">
       
       {/* Logger Form */}
       <div className="glass-panel" style={{ padding: '28px' }}>
@@ -58,7 +58,7 @@ export const SleepTracker = () => {
         </h3>
 
         <form onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '16px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 500, marginBottom: '8px' }}>DURATION (HOURS)</label>
               <input
@@ -109,7 +109,7 @@ export const SleepTracker = () => {
               SLEEP CYCLES STAGES (MUST SUM TO 100%)
             </label>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+            <div className="responsive-grid-3col" style={{ gap: '12px' }}>
               <div>
                 <label style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>DEEP (%)</label>
                 <input type="number" className="form-input" value={deep} onChange={(e) => setDeep(e.target.value)} required />
@@ -143,7 +143,7 @@ export const SleepTracker = () => {
           <h3 style={{ fontSize: '18px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
             <TrendingUp size={20} className="text-gradient-cyan-violet" /> Sleep Cycles Analysis
           </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="responsive-grid-2col" style={{ gap: '20px' }}>
             <div>
               <div style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-cyan)' }}>{avgStats.avgHours} Hrs</div>
               <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Avg Sleep Duration</div>

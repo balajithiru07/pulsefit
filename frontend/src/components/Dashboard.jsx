@@ -90,15 +90,7 @@ export const Dashboard = ({ setTab }) => {
   return (
     <div className="animate-fade-in">
       {/* Welcome Banner */}
-      <div className="glass-panel" style={{
-        padding: '32px',
-        marginBottom: '28px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)',
-        borderColor: 'rgba(6, 182, 212, 0.15)'
-      }}>
+      <div className="glass-panel responsive-welcome-banner">
         <div>
           <h2 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '6px' }}>
             Welcome back, <span className="text-gradient-cyan-violet">{user?.name || 'Athlete'}</span>!
@@ -107,7 +99,7 @@ export const Dashboard = ({ setTab }) => {
             Your fitness parameters are looking strong. Track goals, meals, and sleep cycles.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
           <div className="glass-panel" style={{ padding: '12px 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Zap style={{ color: 'var(--color-amber)' }} />
             <div>
@@ -125,7 +117,7 @@ export const Dashboard = ({ setTab }) => {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '28px' }}>
+      <div className="responsive-grid-2-1">
         {/* Left Grid */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           
@@ -189,7 +181,7 @@ export const Dashboard = ({ setTab }) => {
           </div>
 
           {/* Core Analytics Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="responsive-grid-3col">
             {/* Calories Ring */}
             <div className="glass-panel" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Flame size={24} style={{ color: 'var(--color-rose)', marginBottom: '12px' }} />
@@ -200,6 +192,7 @@ export const Dashboard = ({ setTab }) => {
               </div>
               <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '6px' }}>Target: {user?.targetCalories || 2000} kcal</span>
             </div>
+
 
             {/* Water Tracker */}
             <div className="glass-panel" style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

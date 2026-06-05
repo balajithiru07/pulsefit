@@ -22,7 +22,7 @@ export const AdminDashboard = () => {
       <h2 style={{ fontSize: '26px', fontWeight: 700, marginBottom: '24px' }}>🛡️ Platform Admin Management</h2>
 
       {/* Grid counters */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '28px' }}>
+      <div className="responsive-grid-4col" style={{ marginBottom: '28px' }}>
         <div className="glass-panel" style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{ padding: '10px', background: 'rgba(6, 182, 212, 0.1)', color: 'var(--color-cyan)', borderRadius: '10px' }}>
             <Users size={24} />

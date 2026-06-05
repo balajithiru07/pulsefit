@@ -47,20 +47,8 @@ export const Billing = () => {
       
       {/* Invoice details print popup */}
       {activeInvoice && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'rgba(11, 15, 25, 0.95)',
-          zIndex: 1000,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '24px'
-        }}>
-          <div className="glass-panel" style={{
+        <div className="modal-overlay" style={{ background: 'rgba(11, 15, 25, 0.95)' }}>
+          <div className="modal-content" style={{
             width: '100%',
             maxWidth: '600px',
             padding: '40px',
@@ -91,7 +79,7 @@ export const Billing = () => {
               <p style={{ color: '#64748b', fontSize: '13px', marginTop: '4px' }}>Transaction details & invoice statement</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px', fontSize: '13px' }}>
+            <div className="responsive-grid-2col" style={{ gap: '20px', marginBottom: '24px', fontSize: '13px' }}>
               <div>
                 <div style={{ color: '#64748b', fontWeight: 600 }}>BILLED TO:</div>
                 <div style={{ fontWeight: 700, marginTop: '4px' }}>{user?.name || user?.email}</div>
@@ -145,14 +133,14 @@ export const Billing = () => {
       )}
 
       {/* Main Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: checkoutPlan ? '1fr' : '1.5fr 1fr', gap: '28px' }}>
+      <div className={checkoutPlan ? "" : "responsive-grid-meals"} style={{ gap: '28px' }}>
         
         {/* Pricing Plan Options */}
         {!checkoutPlan && (
           <div className="glass-panel" style={{ padding: '28px' }}>
             <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>Choose your active plan</h3>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div className="responsive-grid-2col" style={{ gap: '20px' }}>
               {/* Free Plan Card */}
               <div className="glass-panel" style={{ padding: '24px', background: 'rgba(255,255,255,0.01)', border: '1px solid var(--border-glass)' }}>
                 <h4 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-secondary)' }}>Free Tier Plan</h4>
@@ -243,7 +231,7 @@ export const Billing = () => {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+              <div className="responsive-grid-2col" style={{ gap: '16px', marginBottom: '24px' }}>
                 <div>
                   <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '12px', fontWeight: 500, marginBottom: '8px' }}>EXPIRY DATE</label>
                   <input
